@@ -139,7 +139,9 @@ public class UserDao extends PostgresDAO<User> implements IDAO<User> {
             rs.close();
             preparedStatement.close();
             connection.close();
-            return users;
+            if (users.size() > 0){
+                return users;
+            }
         } catch (SQLException e) {
             connection.close();
             e.printStackTrace();
